@@ -4,12 +4,14 @@ const dbConnect = require('./config/dbConnect');
 const authRouter = require('./routes/authRoute');
 const bodyParser = require('body-parser');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
+const cookieParser = require('cookie-parser');
 
 dbConnect();
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 4000;
 
