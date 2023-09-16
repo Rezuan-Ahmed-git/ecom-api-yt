@@ -11,4 +11,27 @@ const createProduct = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { createProduct };
+//get a product
+const getAProduct = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  try {
+    const findProduct = await Product.findById(id);
+    res.json(findProduct);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+const getAllProducts = asyncHandler(async (req, res) => {
+  try {
+    const getAllProducts = await Product.find();
+    res.json(getAllProducts);
+  } catch (error) {
+    throw new Error(error);
+  }
+});
+
+// const getAllProducts = asyncHandler(async(req, res)=> {})
+// const getAllProducts = asyncHandler(async(req, res)=> {})
+
+module.exports = { createProduct, getAProduct, getAllProducts };
