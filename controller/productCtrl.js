@@ -3,6 +3,7 @@ const Product = require('../models/productModel');
 const User = require('../models/userModel');
 const slugify = require('slugify');
 const cloudinaryUploadImg = require('../utils/cloudinary');
+const fs = require('fs');
 
 //create product
 const createProduct = asyncHandler(async (req, res) => {
@@ -234,6 +235,7 @@ const uploadImages = asyncHandler(async (req, res) => {
       const newPath = await uploader(path);
       const url = newPath?.secure_url;
       urls.push({ url });
+      fs.unlinkSync(path);
     }
 
     const findProduct = await Product.findByIdAndUpdate(

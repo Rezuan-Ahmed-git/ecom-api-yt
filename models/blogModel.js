@@ -39,11 +39,7 @@ var blogSchema = new mongoose.Schema(
         ref: 'User',
       },
     ],
-    image: {
-      type: String,
-      default:
-        'https://lerablog.org/wp-content/uploads/2018/01/gtrgrtgfgfgs.jpg',
-    },
+    images: [],
     author: {
       type: String,
       default: 'Admin',
