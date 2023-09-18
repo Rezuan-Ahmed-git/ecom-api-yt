@@ -5,7 +5,7 @@ const {
   deleteCategory,
   getACategory,
   getAllCategories,
-} = require('../controller/prodCategoryCtrl');
+} = require('../controller/blogCategoryCtrl');
 const { authMiddleware, isAdmin } = require('../middlewares/authMiddleware');
 
 router.post('/', authMiddleware, isAdmin, createCategory);
